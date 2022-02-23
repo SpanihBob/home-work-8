@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>дз_8</title>
+</head>
+<body>
+<!-- 1. Написать функцию, которая принимает строку и выводит статистику о ней: количество букв, количество цифр и
+количество других знаков. -->
+<!-- <script>
+    function statistics(str) {
+        console.log(str);
+        //переводим строку в нижний регистр и отфильтровываем все кроме букв, цифр, других знаков
+        str1 = str.toLowerCase().replace(/[.,;:!?%0-9]/g, '');
+        str2 = str.toLowerCase().replace(/[.,;:!?%a-zа-яё]/g, '');
+        str3 = str.toLowerCase().replace(/[0-9a-zа-яё]/g, '');
+        //убираем пробелы
+        num = str1.split(' ').join('').split('');
+        num1 = str2.split(' ').join('').split('');
+        num2 = str3.split(' ').join('').split('');
+        // выводим в консоль
+        console.log(num.length + ' букв');
+        console.log(num1.length + ' цифр');
+        console.log(num2.length + ' знаков');    
+    }
+    statistics('привDSDFет как дела 1233.,m');  
+</script> -->
+
+<!-- 2. Написать функцию, которая принимает двузначное число и возвращает его в текстовом виде.
+Например: 35 – тридцать пять, 89 – восемьдесят девять, 12 – двенадцать. -->
+
+<!-- <script>
+    function displayName(number) {
+        //вводим постоянные массивы с названиями цифр 
+        const one = ['один' , 'два' , 'три' , 'четыре' , 'пять' , 'шесть' , 'семь' , 'восемь' , 'девять'];
+        const ten = ['десять' , 'одинадцать' , 'двенадцать' , 'тринадцать' , 'четырнадцать' , 'пятнадцать' , 'шестнадцать' , 'семнадцать' , 'восемнадцать' , 'девятнадцать'];
+        const twenty_ninety = ['двадцать' , 'тридцать' , 'сорок' , 'пятьдесят' , 'шестьдесят' , 'семдесят' , 'восемдесят' , 'девяносто'];
+        if ((number > 0) && (number < 9)) {
+            console.log(one[ number - 1 ]);
+        }   else if ((number >= 10) && (number < 20)) {
+                console.log(ten[ number - 10 ]);
+            }   else if ((number > 19) && (number < 100)) {                    
+                    let num = `${number}`;      //делаем число строкой
+                    num = num.split('');        //переводим строку в массив
+                    let one_index = num[0];
+                    let two_index = num[1];
+                    if(num[1]!=0)console.log( twenty_ninety[ one_index - 2 ] + ' ' +  one[ two_index - 1]);
+                    else console.log( twenty_ninety[ one_index - 2 ]);
+                }
+    }
+       displayName(60); 
+       displayName(41);
+       displayName(20);
+</script> -->
+
+<!-- 3. Написать функцию, которая заменяет в полученной строке большие буквы на маленькие, маленькие – на большие, а
+цифры – на знак нижнего подчеркивания. -->
+   
+    <!-- <script>
+        function bigSmall(text_translation) {
+            let text = text_translation;
+            console.log(text);
+            text = text_translation.split('');           
+            for (i = 0; i < text.length; i++) {                
+                if (text[i] == text[i].toUpperCase()) {
+                    text[i] = text[i].toLowerCase();            
+                }   else if (text[i] == text[i].toLowerCase()) {
+                        text[i] = text[i].toUpperCase();  
+                    }
+                        //заменяем не буквы на подчеркивание
+                text[i] = text[i].replace(/[0-9]/g , '_');  
+                             } 
+            console.log(text.join(''));
+        }
+    bigSmall('UJЁёNKSNDC етод возвращает cтроку 3234с неDKMLми или6 всеми 1t58678c')
+    </script> -->
+
+<!-- 4. Написать функцию, которая преобразует названия cssстилей с дефисом в название в СamelСase стиле: font-size
+в fontSize, background-color в backgroundColor, text-align в textAlign. -->
+
+<!-- <script>
+    function cssStyle(text_css) {
+        let css_style = text_css;
+        let scc_style_1;
+        console.log(css_style);
+        css_style = text_css.split('-');
+        css_style_1 = css_style[1];
+        css_style_1 = css_style_1.toUpperCase().substr(0,1) + css_style_1.substring(1);
+        css_style[1] = css_style_1;  
+        css_style = css_style[0] + css_style[1];
+        console.log(css_style);
+    }
+    cssStyle('font-size');
+    cssStyle('background-color');
+    cssStyle('text-align');
+</script> -->
+
+<!-- 5. Написать функцию, которая принимает словосочетание и превращает его в аббревиатуру. Например: cascading style sheets 
+в CSS, объектно ориентированное программирование в ООП. -->
+
+<!-- <script>
+    function abbreviation(text) {
+        let abb = text;        
+        console.log(abb);
+        //переводим строку в массив разделенный по пробелам \s не буквам, и тире
+        abb = abb.split(/[\s-]+/);  
+        //для каждого элемента массива выполняем фенкцию firstLetter
+        abb.forEach(firstLetter);      
+        function firstLetter(item) {
+            for (let i = 0; i < abb.length; i++) {
+                // каждое слово переводим в верхний регистр и берем первую букву слова
+                abb[i] = abb[i].toUpperCase().substr(0, 1);                
+            }
+        }
+    console.log(abb.join(''));        
+    }
+    abbreviation('объектно-ориентированное программирование');
+    abbreviation('Российское общество историков-архивистов');
+    abbreviation('');
+</script> -->
+
+<!-- 6. Написать функцию, которая принимает любое количество строк, объединяет их в одну длинную строку и возвращает ее. -->
+
+<!-- <script>
+    let string_in_line = '';
+    function allInOne(line) {
+        string_in_line = string_in_line + line + ' ';
+        console.log(string_in_line);
+    }
+    allInOne('Не плюй в колодец, пригодится воды напиться.');
+    allInOne('Был бы лес, соловьи прилетят.');
+    allInOne('Кто не сажал дерева, тому не лежать в тени.');
+    allInOne('Застает зимушка в летнем платьице.');
+
+</script> -->
+
+<!-- 7. Написать функцию – калькулятор. Функция принимает строку с примером, определяет, какое действие необходимо
+выполнить (+ - * /), переводит операнды в числа, решает пример и возвращает результат. -->
+
+<!-- <script>
+    function calculator(algebraicExample){
+        let calc = algebraicExample;
+        // console.log(calc);
+        //определяем математическое действие
+        let sign = calc.replace(/[0-9]/g, '');
+        // console.log(sign);
+        //переводим строку в массив разделенный по знакам (+, -, *, /) чтобы узнать числа
+        calc = calc.split(/[/*+-]/); 
+        // console.log(calc);
+        //переводим строку в число
+        calc[0] = Number(calc[0]);
+        calc[1] = Number(calc[1]);
+        // console.log(calc);
+        //решаем пример
+        let solution;
+        // if (sign == '+') {
+        //     solution = calc[0] + calc[1];
+        // } else if (sign == '-') {
+        //     solution = calc[0] - calc[1];
+        //        } else if (sign == '*') {
+        //                 solution = calc[0] * calc[1];
+        //               } else if (sign == '/') {
+        //                      solution = calc[0] / calc[1];
+        //                      }     
+        switch (sign) {
+            case '*': solution = calc[0] * calc[1];
+            break;
+            case '/': solution = calc[0] / calc[1];
+            break;
+            case '+': solution = calc[0] + calc[1];
+            break;
+            case '-': solution = calc[0] - calc[1];
+            break;
+            default: 'неверно введено действие';
+        }                               
+        console.log(algebraicExample + '=' + solution);
+    }
+    calculator('3*22');
+    calculator('14/2');
+    calculator('1+5');
+    calculator('7-1');
+</script>  -->
+
+<!-- 8. Написать функцию, которая получает url и выводит подробную информацию о нем. 
+Например: url “https://itstep.org/ua/about”, информация “протокол: https, домен: itstep.org, путь: /ua/about”. -->
+
+<!-- <script>
+    function urlInfo(url) {
+        let string_url = url;
+        console.log(url);
+                //выводим протокол
+        let index_protocol = string_url.indexOf('://');             //ищем индекс 1 разделителя
+        let protocol = string_url.substring(0, index_protocol);     //получаем подстроку протокол
+        console.log('протокол: ' + protocol);
+                //выводим домен
+        let remainder = string_url.substring(index_protocol + 3);   //выводим строку без протокола и 1 разделителя
+        let index_domain = remainder.indexOf('/');                  //ищем индекс 2 разделителя
+        let domain = remainder.substring(0, index_domain);          //получаем подстроку домен
+        console.log('домен: ' + domain);
+                //выводим путь
+        let way = remainder.substring(index_domain);                //получаем подстроку путь
+        console.log('путь: ' + way);
+    }
+    urlInfo('https://itstep.org/ua/about');
+</script> -->
+
+<!-- 9. Написать функцию, которая принимает строку и разделитель и возвращает массив подстрок, разбитых с помощью
+указанного разделителя. Например: строка “10/08/2020”, разделитель “/”, результат: “10”, “08”, “2020”.
+Выполняя задание, не используйте функцию split(). -->
+
+<!-- <script>
+    function stringToArray(str, sep) {
+        let delimitedString = str;
+        console.log('строка: ' + delimitedString);
+        console.log('разделитель: ' + sep);
+        let strSum = [''];                    //создаем пустой массив для хранения данных между разделителями
+        let arrayIndex = 0;
+        for (let i = 0; i < delimitedString.length; i++) {
+            if (delimitedString[i] != sep){
+                strSum[arrayIndex] = strSum[arrayIndex] + delimitedString[i];
+            } else {
+                arrayIndex++
+                strSum[arrayIndex] = '';
+            }
+        };
+        console.log(strSum);
+    }
+    stringToArray('10/11/2021', '/');
+    stringToArray('10$11$2021', '$');
+</script> -->
+
+<!-- 10. Написать функцию вывода текста по заданному шаблону. Функция принимает первым параметром шаблон, в тексте
+которого может использоваться %, после символа % указывается индекс входного параметра. При выводе вместо
+%индекс необходимо вывести значение соответствующего входного параметра. Например: print(“Today is %1 %2.%3.%4”, 
+“Monday”, 10, 8, 2020) должна вывести “Today is Monday 10.8.2020”. -->
+
+<script>
+    function templateText(text, val1, val2, val3, val4) {
+        let str = text;
+        let val = [];
+         val[0] = val1;
+         val[1] = val2;
+         val[2] = val3;
+         val[3] = val4;
+        console.log('шаблон: ' + text);
+        console.log('переменные: ' + val1 + ', ' + val2 +', ' + val3 + ', ' + val4);
+        str = str.split(/[\s.]/);                   //переводим строку в массив разделяя по пробелам и точкам
+        // console.log(str);
+        
+        let value_index = 0;
+        for (let i = 0; i < str.length; i++) {
+            if (str[i].indexOf('%') != -1) {
+                str[i] = val[value_index];
+                value_index++;
+            } else continue;
+        }        
+        str[3] = str[3] + '.';                      //добавляем точки в дату                   
+        str[4] = str[4] + '.';
+        str[3] = str[3] + str[4] +str[5];           //сохраняем значения даты в один элемент массива
+        delete str[4];                              //удаляем ненужные элементы массива
+        delete str[5];
+        console.log(str.join(' '));                 //выводим результат строкой
+    }
+    templateText('Today is %1 %2.%3.%4', 'Monday', 10, 8, 2020);
+    templateText('Tomorrow is %1 %2.%3.%4', 'Tuesday', 11, 8, 2020);
+</script>
+
+</body>
+</html>
